@@ -10,9 +10,10 @@ var gulp = require('gulp'),
 
 gulp.task('scripts', function () {
 
-    return gulp.src(config.src.scripts)
-        .pipe($.ts({
+    var ts = gulp.src(config.src.scripts)
+        .pipe($.typescript({
             noImplicitAny: true,
-            out: config.dist + 'scripts.js'
-        });
+        }));
+
+    return ts.js.pipe(gulp.dest(config.dist));
 });
